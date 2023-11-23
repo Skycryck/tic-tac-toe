@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
-var player = 1;
-var tab = [0,0,0,0,0,0,0,0,0];
-var win = false;
-var end = false;
+let player = 1;
+let tab = [0,0,0,0,0,0,0,0,0];
+let win = false;
+let end = false;
 
 function init() {
 	let cel = document.querySelectorAll("td");
-	for(var i = 0; i < cel.length; i++) {
+	for(let i = 0; i < cel.length; i++) {
 		cel[i].addEventListener("click", click);
 	}
 	document.getElementById("newGame").addEventListener("click", newGame);
 }
 
-function click(e) {
+function click() {
 	game(this);
 }
 
@@ -47,24 +47,21 @@ function game(cell) {
 }
 
 function isWinning() {
-    if     (tab[0] != 0 && tab [1] != 0 && tab[2] != 0 && tab[0] === tab [1] && tab[1] === tab[2])
+    if     (tab[0] !== 0 && tab [1] !== 0 && tab[2] !== 0 && tab[0] === tab [1] && tab[1] === tab[2])
 		return true;
-	else if(tab[3] != 0 && tab [4] != 0 && tab[5] != 0 && tab[3] === tab [4] && tab[4] === tab[5])
+	else if(tab[3] !== 0 && tab [4] !== 0 && tab[5] !== 0 && tab[3] === tab [4] && tab[4] === tab[5])
 		return true;
-	else if(tab[6] != 0 && tab [7] != 0 && tab[8] != 0 && tab[6] === tab [7] && tab[7] === tab[8])
+	else if(tab[6] !== 0 && tab [7] !== 0 && tab[8] !== 0 && tab[6] === tab [7] && tab[7] === tab[8])
 		return true;
-	else if(tab[0] != 0 && tab [3] != 0 && tab[6] != 0 && tab[0] === tab [3] && tab[3] === tab[6])
+	else if(tab[0] !== 0 && tab [3] !== 0 && tab[6] !== 0 && tab[0] === tab [3] && tab[3] === tab[6])
 		return true;
-	else if(tab[1] != 0 && tab [4] != 0 && tab[7] != 0 && tab[1] === tab [4] && tab[4] === tab[7])
+	else if(tab[1] !== 0 && tab [4] !== 0 && tab[7] !== 0 && tab[1] === tab [4] && tab[4] === tab[7])
 		return true;
-	else if(tab[2] != 0 && tab [5] != 0 && tab[8] != 0 && tab[2] === tab [5] && tab[5] === tab[8])
+	else if(tab[2] !== 0 && tab [5] !== 0 && tab[8] !== 0 && tab[2] === tab [5] && tab[5] === tab[8])
 		return true;
-	else if(tab[0] != 0 && tab [4] != 0 && tab[8] != 0 && tab[0] === tab [4] && tab[4] === tab[8])
+	else if(tab[0] !== 0 && tab [4] !== 0 && tab[8] !== 0 && tab[0] === tab [4] && tab[4] === tab[8])
 		return true;
-	else if(tab[6] != 0 && tab [4] != 0 && tab[2] != 0 && tab[6] === tab [4] && tab[4] === tab[2])
-		return true;
-	else
-		return false;
+	else return tab[6] !== 0 && tab [4] !== 0 && tab[2] !== 0 && tab[6] === tab [4] && tab[4] === tab[2];
 }
 
 function changePlayer() {
@@ -86,7 +83,7 @@ function isFull() {
     return true;
 }
 
-function newGame(e) {
+function newGame() {
 	end = false;
 	let cel = document.querySelectorAll("td");
 	for (let i = 0; i < cel.length; i++) {
